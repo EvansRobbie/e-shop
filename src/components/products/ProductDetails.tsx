@@ -37,7 +37,6 @@ const Horizontal = () => {
 const ProductDetails: FC<ProductDetailProp> = ({ product }) => {
   const { handleAddToCart, cartProducts } = useCart();
   const [inCart, setIncart] = useState(false);
-  console.log(cartProducts);
   const [cartProduct, setCartProduct] = useState({
     id: product.id,
     name: product.name,
