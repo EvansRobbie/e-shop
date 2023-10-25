@@ -40,6 +40,15 @@ const ProductImage: FC<ProductImageProps> = ({
           </div>
         ))}
       </div>
+      <div className="col-span-5 relative aspect-square">
+        <Image
+          className="w-full h-full object-contain max-h-[500px] min-h-[300px] sm:min-h-[400px]"
+          fill
+          priority
+          src={cartProduct.selectedImg.image}
+          alt={cartProduct.name}
+        />
+      </div>
     </div>
   );
 };
