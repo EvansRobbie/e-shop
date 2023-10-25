@@ -3,6 +3,8 @@ import { Rating } from "@mui/material";
 import React, { FC, useCallback, useState } from "react";
 import SetColor from "./SetColor";
 import SetQuantity from "./SetQuantity";
+import Button from "../Button";
+import ProductImage from "./ProductImage";
 
 interface ProductDetailProp {
   product: any;
@@ -75,7 +77,11 @@ const ProductDetails: FC<ProductDetailProp> = ({ product }) => {
   }, [setCartProduct, cartProduct.qty]);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-      <div>{/* images */}</div>
+      <ProductImage
+        cartProduct={cartProduct}
+        product={product}
+        handleColorSelect={handleColorSelect}
+      />
       <div className="flex flex-col gap-1 text-slate-500 text-sm">
         {/* Derails */}
         <h2 className="text-3xl font-medium text-slate-700">{product.name}</h2>
@@ -111,7 +117,9 @@ const ProductDetails: FC<ProductDetailProp> = ({ product }) => {
           handleQtyDecrease={handleQtyDecrease}
           handleQtyIncrease={handleQtyIncrease}
         />
-        <div>add to cart</div>
+        <div className="mt-4 max-w-[300px]">
+          <Button label="Add To Cart" onClick={() => {}} />
+        </div>
       </div>
     </div>
   );
