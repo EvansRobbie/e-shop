@@ -58,7 +58,7 @@ export const singleProduct = {
       createdDate: "2023-06-26T14:30:40.998Z",
       user: {
         id: "6475af156bad4917456e6e1e",
-        name: "Charles",
+        name: "Charles Dickens",
         email: "example@gmail.com",
         emailVerified: null,
         image:

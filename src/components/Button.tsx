@@ -36,6 +36,7 @@ const Button: FC<ButtonProps> = ({
             : "text-base font-semibold py-3 px-4"
         }
         ${custom ? custom : ""}`}
+      onClick={onClick}
     >
       {Icon && <Icon size={24} />}
       {label}
