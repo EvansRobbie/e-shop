@@ -36,6 +36,13 @@ export const POST = async (req: Request) => {
     delivery: "pending",
     paymentIntentId: payment_intent_id,
     products: items,
+    // address: {
+    //   city: "",
+    //   country: "",
+    //   line1: "",
+    //   line2: "",
+    //   postal_code: "",
+    // },
   };
 
   if (payment_intent_id) {
