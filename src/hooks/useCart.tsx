@@ -33,7 +33,6 @@ export const CartContextProvider = (props: Props) => {
   );
   const [totalAmount, setTotalAmount] = useState(0);
   const [paymentIntent, setPaymentIntent] = useState<string | null>(null);
-  console.log(paymentIntent);
 
   const handleAddToCart = useCallback((product: CartProductType) => {
     setCartProducts((prev) => {
