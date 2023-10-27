@@ -2,7 +2,7 @@
 import React, { FC } from "react";
 import { FieldErrors, FieldValues, UseFormRegister } from "react-hook-form";
 
-interface InputProp {
+interface TextAreaProps {
   id: string;
   label: string;
   type?: string;
@@ -11,10 +11,9 @@ interface InputProp {
   register: UseFormRegister<FieldValues>;
   errors: FieldErrors;
 }
-const Input: FC<InputProp> = ({
+const TextArea: FC<TextAreaProps> = ({
   id,
   label,
-  type,
   register,
   required,
   errors,
@@ -22,14 +21,13 @@ const Input: FC<InputProp> = ({
 }) => {
   return (
     <div className="w-full relative ">
-      <input
+      <textarea
         autoComplete="off"
         id={id}
         disabled={disabled}
         {...register(id, { required })}
         placeholder=""
-        type={type}
-        className={`peer w-full p-4 pt-6 outline-none bg-white font-light border-2 
+        className={`peer w-full p-4 pt-6 max-h-[150px] min-h-[150px] outline-none bg-white font-light border-2 
       rounded-md transition disabled:opacity-70 disabled:cursor-not-allowed
        ${
          errors[id]
@@ -51,4 +49,4 @@ const Input: FC<InputProp> = ({
   );
 };
 
-export default Input;
+export default TextArea;
