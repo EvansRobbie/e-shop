@@ -56,10 +56,10 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     async signIn({ user, account, profile }) {
-      // console.log("signin callback", data);
-      // console.log("account", account);
-      // console.log("profile", profile);
-      // console.log("user", user);
+      console.log("signin callback");
+      console.log("account", account);
+      console.log("profile", profile);
+      console.log("user", user);
 
       return true;
     },

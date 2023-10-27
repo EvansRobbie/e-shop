@@ -1,5 +1,4 @@
 import { withAuth } from "next-auth/middleware";
-import { getCurrentUser } from "./actions/getCurrentUser";
 import { NextResponse } from "next/server";
 
 export default withAuth(
@@ -10,16 +9,17 @@ export default withAuth(
     console.log(url);
     const userRole = req?.nextauth?.token?.role;
     if (url.startsWith("/admin") && userRole !== "ADMIN") {
+      console.log("first");
       return NextResponse.redirect(new URL("/", req.url));
     }
-  },
-  {
-    callbacks: {
-      authorized: ({ token }) => {
-        return false;
-      },
-    },
   }
+  //   {
+  //     callbacks: {
+  //       authorized: ({ token }) => {
+  //         return false;
+  //       },
+  //     },
+  //   }
 );
 export const config = {
   matcher: ["/profile", "/orders", "/checkout", "/admin/:path*"],
