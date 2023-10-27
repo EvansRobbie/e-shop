@@ -8,8 +8,9 @@ import Link from "next/link";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { signIn } from "next-auth/react";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { SafeUser } from "@/types/type";
+import { parseCallbackUrl } from "@/helpers/parseRedirect";
 
 interface LoginFormProps {
   currentUser: SafeUser | undefined | any;
@@ -17,6 +18,8 @@ interface LoginFormProps {
 
 const LoginForm: FC<LoginFormProps> = ({ currentUser }) => {
   const router = useRouter();
+  const params = useSearchParams();
+  const callBackUrl = params?.get("callbackUrl");
   const [isLoading, setIsLoading] = useState(false);
   const {
     register,
@@ -43,15 +46,17 @@ const LoginForm: FC<LoginFormProps> = ({ currentUser }) => {
     signIn("credentials", {
       ...data,
       redirect: false,
+      callbackUrl: callBackUrl ? parseCallbackUrl(callBackUrl) : "/",
     }).then((callback) => {
       setIsLoading(false);
       if (callback?.ok) {
-        router.push("/");
+        router.push(`${callback.url}`);
         router.refresh();
         toast.success("Logged in");
       }
       if (callback?.error) {
         toast.error(callback.error);
+        // toast.error(`${params?.get("error")}`);
       }
     });
   };

@@ -52,6 +52,34 @@ export const authOptions: AuthOptions = {
   ],
   pages: {
     signIn: "/login",
+    error: "/login",
+  },
+  callbacks: {
+    async signIn({ user, account, profile }) {
+      // console.log("signin callback", data);
+      // console.log("account", account);
+      // console.log("profile", profile);
+      // console.log("user", user);
+
+      return true;
+    },
+    async jwt({ token, user }) {
+      // console.log("jwt callback", { token, user });
+      if (user) return { ...token, ...user };
+      return token;
+    },
+    async session({ session, token }: { session: any; token: any; user: any }) {
+      // console.log("session callback", { session, token, user });
+      if (session) {
+        // console.log(session);
+        // console.log(token);
+        session.user = token;
+
+        return session;
+      } else {
+        return null;
+      }
+    },
   },
   debug: process.env.NODE_ENV === "development",
   session: {
