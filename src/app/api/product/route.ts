@@ -8,8 +8,15 @@ export const POST = async (req: Request) => {
   if (currentUser?.role !== "ADMIN") {
     return NextResponse.error();
   }
-  const { name, price, description, brand, category, inStock, images } =
-    await req.json();
+  const {
+    name,
+    price,
+    description,
+    brand,
+    category,
+    inStock,
+    images: image,
+  } = await req.json();
 
   try {
     const product = await prisma?.product.create({
@@ -20,7 +27,7 @@ export const POST = async (req: Request) => {
         brand,
         category,
         inStock,
-        images,
+        image,
       },
     });
 
