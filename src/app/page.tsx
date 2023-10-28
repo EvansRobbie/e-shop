@@ -1,3 +1,4 @@
+export const revalidate = 0;
 import { IProductParams, getProducts } from "@/actions/getProducts";
 import Container from "@/components/Container";
 import HomeBanner from "@/components/nav/HomeBanner";
