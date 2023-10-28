@@ -116,9 +116,12 @@ const ManageProductsClient: FC<ManageProductsClientProps> = ({ products }) => {
             />
             <ActionBtn
               icon={MdDelete}
-              onClick={() => handleDelete(params.row.id, params.row.image)}
+              onClick={() => handleDelete(params.row.id, params.row.images)}
             />
-            <ActionBtn icon={MdRemoveRedEye} onClick={() => {}} />
+            <ActionBtn
+              icon={MdRemoveRedEye}
+              onClick={() => router.push(`/product/${params.row.id}`)}
+            />
           </div>
         );
       },
@@ -151,7 +154,7 @@ const ManageProductsClient: FC<ManageProductsClientProps> = ({ products }) => {
   );
 
   const handleDelete = useCallback(
-    async (id: string, images: any[]) => {
+    async (productId: string, images: any[]) => {
       toast("Deleting product, please wait..");
 
       const handleImageDelete = async () => {
@@ -168,8 +171,9 @@ const ManageProductsClient: FC<ManageProductsClientProps> = ({ products }) => {
         }
       };
       await handleImageDelete();
+
       axios
-        .delete(`/api/delete/${id}`)
+        .delete(`/api/product/${productId}`)
         .then((res) => {
           toast.success("Product deleted");
           router.refresh();
