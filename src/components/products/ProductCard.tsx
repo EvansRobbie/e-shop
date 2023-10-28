@@ -11,11 +11,12 @@ interface ProductCardProps {
 }
 
 const ProductCard: FC<ProductCardProps> = ({ data }) => {
+  console.log(data);
   const productRating =
-    data.reviews.reduce(
+    data.reviews?.reduce(
       (accu: number, item: { rating: number }) => item.rating + accu,
       0
-    ) / data.reviews.length;
+    ) / data.reviews?.length;
   return (
     <Link
       href={`/product/${data.id}`}
@@ -26,12 +27,12 @@ const ProductCard: FC<ProductCardProps> = ({ data }) => {
         <div className="aspect-square overflow-hidden relative w-full">
           <Image
             fill
-            src={data.images[0].image}
+            src={data.image[0].image}
             alt={data.name}
             className="w-full h-full object-contain"
           />
         </div>
-        <div>{truncateText(data.name)}</div>
+        <div>{data && truncateText(data.name)}</div>
         <div>
           <Rating value={productRating} readOnly />
         </div>
