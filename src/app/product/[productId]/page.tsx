@@ -1,11 +1,9 @@
 import { getCurrentUser } from "@/actions/getCurrentUser";
-import { getProductsById } from "@/actions/getProductById";
+import { getProductsById } from "@/actions/getProductsById";
 import Container from "@/components/Container";
 import AddRating from "@/components/products/AddRating";
 import ListRating from "@/components/products/ListRating";
 import ProductDetails from "@/components/products/ProductDetails";
-import { products } from "@/data/Product";
-import { singleProduct } from "@/data/singleProduct";
 import React, { FC } from "react";
 
 interface ProductIdProps {
