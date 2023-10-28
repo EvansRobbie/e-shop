@@ -13,7 +13,7 @@ export const POST = async (req: Request) => {
 
   const deliveredOrder = currentUser.orders.some(
     (order) =>
-      order.products.find((item) => item.id === product) &&
+      order.products.find((item) => item.id === product.id) &&
       order.delivery === "delivered"
   );
   const userReview = product?.reviews.find(

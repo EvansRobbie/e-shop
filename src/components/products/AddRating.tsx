@@ -76,9 +76,10 @@ const AddRating: FC<AddRatingProps> = ({ product, user }) => {
   if (!user || !product) return null;
   const deliveredOrder = user.orders.some(
     (order: any) =>
-      order.products.find((item: any) => item.id === product) &&
+      order.products.find((item: any) => item.id === product.id) &&
       order.delivery === "delivered"
   );
+  //   console.log(deliveredOrder);
   const userReview = product?.reviews.find(
     (review: Review) => review.userId === user.id
   );

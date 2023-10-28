@@ -20,7 +20,7 @@ const ListRating: FC<ListProps> = ({ product }) => {
                 <div className="flex items-center gap-2">
                   <Avatar src={review.user.image} user={review.user.name} />
                   <div className="font-semibold">{review?.user.name}</div>
-                  <div>{moment(review.createdDate).fromNow()}</div>
+                  <div>{moment(review.createdAt).fromNow()}</div>
                 </div>
                 <div className="mt-2">
                   <Rating value={review.rating} readOnly />
