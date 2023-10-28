@@ -1,5 +1,7 @@
+import { getCurrentUser } from "@/actions/getCurrentUser";
 import { getProductsById } from "@/actions/getProductById";
 import Container from "@/components/Container";
+import AddRating from "@/components/products/AddRating";
 import ListRating from "@/components/products/ListRating";
 import ProductDetails from "@/components/products/ProductDetails";
 import { products } from "@/data/Product";
@@ -15,12 +17,13 @@ interface ProductIdProps {
 const ProductId: FC<ProductIdProps> = async ({ params: { productId } }) => {
   // console.log(productId);
   const product = await getProductsById({ productId });
+  const user = await getCurrentUser();
   return (
     <div className="mt-8">
       <Container>
         <ProductDetails product={product} />
         <div className="flex flex-col mt-20 gap-4">
-          <div>Add rating</div>
+          <AddRating product={product} user={user} />
           <ListRating product={product} />
         </div>
       </Container>

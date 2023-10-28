@@ -18,6 +18,7 @@ export const getCurrentUser = async () => {
       where: {
         email: session.user.email,
       },
+      include: { orders: true },
     });
     if (!currentUser) return null;
     return {
