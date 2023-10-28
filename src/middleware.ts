@@ -6,10 +6,9 @@ export default withAuth(
     //authorize roles
     // const currentUser = await getCurrentUser();
     const url = req.nextUrl.pathname;
-    console.log(url);
+
     const userRole = req?.nextauth?.token?.role;
     if (url.startsWith("/admin") && userRole !== "ADMIN") {
-      console.log("first");
       return NextResponse.redirect(new URL("/", req.url));
     }
   }
@@ -22,5 +21,11 @@ export default withAuth(
   //   }
 );
 export const config = {
-  matcher: ["/profile", "/orders", "/checkout", "/admin/:path*"],
+  matcher: [
+    "/profile",
+    "/order",
+    "/orders/:path*",
+    "/checkout",
+    "/admin/:path*",
+  ],
 };
