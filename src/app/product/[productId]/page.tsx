@@ -1,3 +1,4 @@
+import { getProductsById } from "@/actions/getProductById";
 import Container from "@/components/Container";
 import ListRating from "@/components/products/ListRating";
 import ProductDetails from "@/components/products/ProductDetails";
@@ -11,9 +12,9 @@ interface ProductIdProps {
   };
 }
 
-const ProductId: FC<ProductIdProps> = ({ params: { productId } }) => {
+const ProductId: FC<ProductIdProps> = async ({ params: { productId } }) => {
   // console.log(productId);
-  const product = products.find((p) => p.id === productId);
+  const product = await getProductsById({ productId });
   return (
     <div className="mt-8">
       <Container>

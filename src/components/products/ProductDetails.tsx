@@ -43,7 +43,7 @@ const ProductDetails: FC<ProductDetailProp> = ({ product }) => {
     description: product.description,
     category: product.category,
     brand: product.brand,
-    selectedImg: { ...product.images[0] },
+    selectedImg: { ...product.image[0] },
     qty: 1,
     price: product.price,
   });
@@ -133,7 +133,7 @@ const ProductDetails: FC<ProductDetailProp> = ({ product }) => {
           <>
             <SetColor
               cartProduct={cartProduct}
-              images={product.images}
+              images={product.image}
               handleColorSelect={handleColorSelect}
             />
             <Horizontal />

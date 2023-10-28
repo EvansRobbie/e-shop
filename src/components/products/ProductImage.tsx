@@ -20,7 +20,7 @@ const ProductImage: FC<ProductImageProps> = ({
         className="flex flex-col items-center justify-center gap-4 cursor-pointer border 
       h-full  max-h-[500px] min-h-[300px] sm:min-h-[400px]"
       >
-        {product.images.map((img: SelectedImgType, idx: number) => (
+        {product.image.map((img: SelectedImgType, idx: number) => (
           <div
             key={idx}
             className={`relative w-[80%] aspect-square border-teal-300 ${
