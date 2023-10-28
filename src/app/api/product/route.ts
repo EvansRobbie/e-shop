@@ -37,3 +37,19 @@ export const POST = async (req: Request) => {
     return NextResponse.json("Error", { status: 500 });
   }
 };
+
+export const PUT = async (req: Request) => {
+  const currentUser: any = await getCurrentUser();
+
+  if (currentUser?.role !== "ADMIN") {
+    return NextResponse.error();
+  }
+
+  const { id, inStock } = await req.json();
+
+  const product = await prisma.product.update({
+    where: { id },
+    data: { inStock },
+  });
+  return NextResponse.json(product, { status: 200 });
+};
