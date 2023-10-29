@@ -1,8 +1,4 @@
 import Container from "@/components/Container";
-import ListRating from "@/components/products/ListRating";
-import ProductDetails from "@/components/products/ProductDetails";
-import { products } from "@/data/Product";
-import { singleProduct } from "@/data/singleProduct";
 import React, { FC } from "react";
 import OrderDetails from "./OrderDetails";
 import { getOrderById } from "@/actions/getOrderById";
