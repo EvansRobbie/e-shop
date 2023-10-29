@@ -80,7 +80,7 @@ const AddProductForm = () => {
     }
   }, [isProductCreated, reset]);
 
-  const addImageToState = useCallback((value: ImageType) => {
+  const addImageToState: any = useCallback((value: ImageType) => {
     setImages((prev) => {
       if (!prev) {
         return [value];

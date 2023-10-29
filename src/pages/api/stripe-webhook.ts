@@ -58,8 +58,6 @@ export default async function handler(
         });
       }
       break;
-    case "payment_intent.created":
-      break;
     case "payment_intent.succeeded":
       const paymentIntent: any = event.data.object as Stripe.PaymentIntent;
       // console.log(paymentIntent);
